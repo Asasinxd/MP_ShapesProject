@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from MP_ShapesProject.Display.GrapicalDisplay import GrapicalDisplay
+from MP_ShapesProject.Display.TextDisplay import TextDisplay
+from MP_ShapesProject.Shapes.ComplexShape import ComplexShape
+from MP_ShapesProject.Shapes.Triangle import Triangle
+from MP_ShapesProject.Shapes.Circle import Circle
+from MP_ShapesProject.Shapes.Parallelogram import Parallelogramm
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    o1 = TextDisplay()
+    o1.drawCircle(2)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    o2 = GrapicalDisplay()
+    print("r = 3")
+    o2.drawCircle(3)
+
+    o2.drawTriangle(3, 2, 2, -2)
