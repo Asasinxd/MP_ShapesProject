@@ -1,7 +1,9 @@
 from .Display import Display
 
+
 class GrapicalDisplay(Display):
-    def is_point_in_triangle(self, x, y, x1, y1, a1, a2, b1, b2):
+
+    def is_point_in_triangle(self, x: int, y: int, x1: int, y1: int, a1: int, a2: int, b1: int, b2: int) -> bool:
         area_triangle = abs((x1 * (a2 - b2) + a1 * (b2 - y1) + b1 * (y1 - a2)) / 2.0)
         area_sub_triangle1 = abs((x * (y1 - a2) + x1 * (a2 - y) + a1 * (y - y1)) / 2.0)
         area_sub_triangle2 = abs((x * (a2 - b2) + a1 * (b2 - y) + b1 * (y - a2)) / 2.0)
@@ -9,7 +11,7 @@ class GrapicalDisplay(Display):
 
         return area_triangle == area_sub_triangle1 + area_sub_triangle2 + area_sub_triangle3
 
-    def drawTriangle(self, a1, a2, b1, b2):
+    def drawTriangle(self, a1: int, a2: int, b1: int, b2: int):
         min_x = min(0, a1, b1)
         max_x = max(0, a1, b1)
         min_y = min(0, a2, b2)
@@ -25,7 +27,7 @@ class GrapicalDisplay(Display):
 
 
 
-    def drawCircle(self, r):
+    def drawCircle(self, r: int):
         diameter = int(r*2)
 
         radius = diameter / 2 - .5
@@ -46,5 +48,5 @@ class GrapicalDisplay(Display):
         print(result)
 
 
-    def drawParallelogramm(self, a1, a2, b1, b2):
+    def drawParallelogram(self, a1: int, a2: int, b1: int, b2: int):
         pass

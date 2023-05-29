@@ -1,8 +1,10 @@
-from .Shape import Shape
+from Shapes.Shape import Shape
 
 
 class Circle(Shape):
-    def __init__(self, w, a1, a2, b1, b2):
-        pass
+    def __init__(self, w: object, r: int):
+        super().__init__(w)
+        self.r = r
+
     def draw(self):
-        pass
+        self.w.drawCircle(self.r)
