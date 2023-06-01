@@ -25,8 +25,6 @@ class GrapicalDisplay(Display):
                     print(' ', end='')
             print()
 
-
-
     def drawCircle(self, r: int):
         diameter = int(r*2)
 

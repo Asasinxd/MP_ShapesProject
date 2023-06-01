@@ -8,9 +8,16 @@ class ComplexShape(Shape):
         self.a2 = a2
         self.b1 = b1
         self.b2 = b2
+        self.queue = list()
 
-    def add(self):
-        pass
+    def add(self, o: object):
+        if len(self.queue) < 5:
+            if self.queue.append(o):
+                return True
+
+        return False
 
     def draw(self):
-        pass
+        obj = self.queue[0]
+        self.queue.pop(0)
+        obj.draw()
