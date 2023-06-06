@@ -17,4 +17,5 @@ Proiject is created with:
 
 ```
 $ pip install -r requirements
+$ python main.py
 ```
