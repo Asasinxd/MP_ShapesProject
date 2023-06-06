@@ -1,50 +1,58 @@
 from .Display import Display
+from Exceptions.MyExceptions import MyExceptions
+import matplotlib.pyplot as plt
+import numpy as np
 
 class GrapicalDisplay(Display):
-    def is_point_in_triangle(self, x, y, x1, y1, a1, a2, b1, b2):
-        area_triangle = abs((x1 * (a2 - b2) + a1 * (b2 - y1) + b1 * (y1 - a2)) / 2.0)
-        area_sub_triangle1 = abs((x * (y1 - a2) + x1 * (a2 - y) + a1 * (y - y1)) / 2.0)
-        area_sub_triangle2 = abs((x * (a2 - b2) + a1 * (b2 - y) + b1 * (y - a2)) / 2.0)
-        area_sub_triangle3 = abs((x * (b2 - y1) + b1 * (y1 - y) + x1 * (y - b2)) / 2.0)
 
-        return area_triangle == area_sub_triangle1 + area_sub_triangle2 + area_sub_triangle3
+    def drawTriangle(self, a1: int, a2: int, b1: int, b2: int):
+        MyExceptions.validInput(a1, a2, b1, b2)
 
-    def drawTriangle(self, a1, a2, b1, b2):
-        min_x = min(0, a1, b1)
-        max_x = max(0, a1, b1)
-        min_y = min(0, a2, b2)
-        max_y = max(0, a2, b2)
+        vertices = np.array([[0, 0], [a1, a2], [b1, b2], [0, 0]])
 
-        for y in range(min_y, max_y + 1):
-            for x in range(min_x, max_x + 1):
-                if self.is_point_in_triangle(x, y, 0, 0, a1, a2, b1, b2):
-                    print("t", end='')
-                else:
-                    print(' ', end='')
-            print()
+        x = vertices[:, 0]
+        y = vertices[:, 1]
 
+        plt.plot(x, y, 'r')
+        plt.fill(x, y, 'r', alpha=0.3)
 
+        plt.xlim(min(x) - 1, max(x) + 1)
+        plt.ylim(min(y) - 1, max(y) + 1)
 
-    def drawCircle(self, r):
-        diameter = int(r*2)
+        plt.show()
 
-        radius = diameter / 2 - .5
-        r = (radius + .25) ** 2 + 1
+    def drawCircle(self, r: int):
+        MyExceptions.validInputCircle(r)
 
-        result = ''
+        theta = np.linspace(0, 2 * np.pi, 100)
+        x = r * np.cos(theta)
+        y = r * np.sin(theta)
 
-        for i in range(diameter):
-            y = (i - radius) ** 2
-            for j in range(diameter):
-                x = (j - radius) ** 2
-                if x + y <= r:
-                    result = result + 'c  '
-                else:
-                    result = result + '   '
-            result = result + '\n'
+        plt.plot(x, y, 'r')
+        plt.fill(x, y, 'r', alpha=0.3)
 
-        print(result)
+        plt.xlim(-r - 1, r + 1)
+        plt.ylim(-r - 1, r + 1)
+
+        plt.show()
 
 
-    def drawParallelogramm(self, a1, a2, b1, b2):
-        pass
+    def drawParallelogram(self, a1: int, a2: int, b1: int, b2: int):
+        MyExceptions.validInput(a1, a2, b1, b2)
+
+        vertices = np.array([[0, 0], [a1, a2], [a1 + b1, a2 + b2], [b1, b2], [0, 0]])
+
+        x = vertices[:, 0]
+        y = vertices[:, 1]
+
+        plt.plot(x, y, 'r')
+        plt.fill(x, y, 'r', alpha=0.3)
+
+        plt.xlim(min(x) - 1, max(x) + 1)
+        plt.ylim(min(y) - 1, max(y) + 1)
+
+        for i, txt in enumerate(vertices):
+            plt.annotate(f'({txt[0]}, {txt[1]})', (txt[0], txt[1]), textcoords="offset points", xytext=(-10, 5),
+                         ha='center')
+
+        plt.show()

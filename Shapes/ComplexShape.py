@@ -2,11 +2,17 @@ from .Shape import Shape
 
 
 class ComplexShape(Shape):
-    def __init__(self, w, a1, a2, b1, b2):
-        pass
+    def __init__(self, w: object):
+        super().__init__(w)
+        self.queue = list()
 
-    def add(self):
-        pass
+    def add(self, o: object) -> bool:
+        if len(self.queue) < 5:
+            if self.queue.append(o):
+                return True
+
+        return False
 
     def draw(self):
-        pass
+        for obj in self.queue:
+            obj.draw()
