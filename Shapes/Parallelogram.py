@@ -10,4 +10,4 @@ class Parallelogram(Shape):
         self.b2 = b2
 
     def draw(self):
-        self.w.drawParllelogram(a1=self.a1, a2=self.a2, b1=self.b1, b2=self.b2)
+        self.w.drawParallelogram(a1=self.a1, a2=self.a2, b1=self.b1, b2=self.b2)
