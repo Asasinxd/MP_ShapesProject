@@ -5,15 +5,15 @@ class TerminalDisplay(Display):
 
     def is_point_in_triangle(self, x: int, y: int, x1: int, y1: int, a1: int, a2: int, b1: int, b2: int) -> bool:
         '''
-        Function checks if point is included in traingle
+        Function checks if point is included in triangle
         :param x: x value of current point
         :param y: y value of current point
-        :param x1:
-        :param y1:
-        :param a1: positive intiger higher then 0, x value of 'a' vector
-        :param a2: positive intiger higher then 0, y value of 'a' vector
-        :param b1: positive intiger higher then 0, x value of 'b' vector
-        :param b2: negative intiger lover then 0, y value of 'b' vector
+        :param x1: x-coordinate of triangle
+        :param y1: y-coordinate of triangle
+        :param a1: positive integer higher then 0, x value of 'a' vector
+        :param a2: positive integer higher then 0, y value of 'a' vector
+        :param b1: positive integer higher then 0, x value of 'b' vector
+        :param b2: negative integer lover then 0, y value of 'b' vector
         :return: bool
         '''
 
@@ -27,10 +27,10 @@ class TerminalDisplay(Display):
     def drawTriangle(self, a1: int, a2: int, b1: int, b2: int):
         '''
         Function draw triangle in command line using 't' character
-        :param a1: positive intiger higher then 0, x value of 'a' vector
-        :param a2: positive intiger higher then 0, y value of 'a' vector
-        :param b1: positive intiger higher then 0, x value of 'b' vector
-        :param b2: negative intiger lover then 0, y value of 'b' vector
+        :param a1: positive integer higher then 0, x value of 'a' vector
+        :param a2: positive integer higher then 0, y value of 'a' vector
+        :param b1: positive integer higher then 0, x value of 'b' vector
+        :param b2: negative integer lover then 0, y value of 'b' vector
         :return: None
         '''
 
@@ -76,14 +76,52 @@ class TerminalDisplay(Display):
 
         print(result)
 
+    def is_point_in_parallelogram(self, x, y, a1, a2, b1, b2):
+        '''
+        Function checks if point is included in parallelogram
+        :param x: x value of current point
+        :param y: y value of current point
+        :param a1: positive integer higher then 0, x value of 'a' vector
+        :param a2: positive integer higher then 0, y value of 'a' vector
+        :param b1: positive integer higher then 0, x value of 'b' vector
+        :param b2: negative integer lover then 0, y value of 'b' vector
+        :return: bool
+        '''
+        p1 = (0, 0)
+        p2 = (a1, a2)
+        p3 = (a1 + b1, a2 + b2)
+        p4 = (b1, b2)
+
+        area_triangle1 = abs((x * (p2[1] - p1[1]) + p1[0] * (y - p2[1]) + p2[0] * (p1[1] - y)) / 2.0)
+        area_triangle2 = abs((x * (p3[1] - p2[1]) + p2[0] * (y - p3[1]) + p3[0] * (p2[1] - y)) / 2.0)
+        area_triangle3 = abs((x * (p4[1] - p3[1]) + p3[0] * (y - p4[1]) + p4[0] * (p3[1] - y)) / 2.0)
+        area_triangle4 = abs((x * (p1[1] - p4[1]) + p4[0] * (y - p1[1]) + p1[0] * (p4[1] - y)) / 2.0)
+
+        area_parallelogram = area_triangle1 + area_triangle2 + area_triangle3 + area_triangle4
+
+        return area_parallelogram == abs(a1 * b2 - a2 * b1)
 
     def drawParallelogram(self, a1: int, a2: int, b1: int, b2: int):
         '''
         Function draw parallelogram in command line using 'p' character
-        :param a1: positive intiger higher then 0, x value of 'a' vector
-        :param a2: positive intiger higher then 0, y value of 'a' vector
-        :param b1: positive intiger higher then 0, x value of 'b' vector
-        :param b2: negative intiger lover then 0, y value of 'b' vector
+        :param a1: positive integer higher then 0, x value of 'a' vector
+        :param a2: positive integer higher then 0, y value of 'a' vector
+        :param b1: positive integer higher then 0, x value of 'b' vector
+        :param b2: negative integer lover then 0, y value of 'b' vector
         :return:
         '''
+
         MyExceptions.validInput(a1, a2, b1, b2)
+
+        max_x = max(a1, a1 + b1)
+        min_x = min(0, b1)
+        max_y = max(a2, a2 + b2)
+        min_y = min(0, b2)
+
+        for y in range(min_y, max_y + 1):
+            for x in range(min_x, max_x + 1):
+                if self.is_point_in_parallelogram(x, y, a1, a2, b1, b2):
+                    print("p", end="")
+                else:
+                    print(" ", end="")
+            print()
