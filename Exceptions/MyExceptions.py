@@ -17,8 +17,8 @@ class MyExceptions(Exception):
         :param r: circle radius to validate
         :return: None
         '''
-        # if int(r):
-        #     raise MyExceptions(r, "Invalid type ")
+        if not isinstance(r, int):
+            raise MyExceptions(r, "Invalid type ")
 
         if r <= 0:
             raise MyExceptions(r)
@@ -33,17 +33,17 @@ class MyExceptions(Exception):
         :param b2: y value of 'b' vector to validate
         :return:
         '''
-        # if int(a1):
-        #     raise MyExceptions(a1, "Invalid type ")
-        #
-        # if int(a2):
-        #     raise MyExceptions(a2, "Invalid type ")
-        #
-        # if int(b1):
-        #     raise MyExceptions(b1, "Invalid type ")
-        #
-        # if int(b2):
-        #     raise MyExceptions(b2, "Invalid type ")
+        if not isinstance(a1, int):
+            raise MyExceptions(a1, "Invalid type ")
+
+        if not isinstance(a2, int):
+            raise MyExceptions(a2, "Invalid type ")
+
+        if not isinstance(b1, int):
+            raise MyExceptions(b1, "Invalid type ")
+
+        if not isinstance(b2, int):
+            raise MyExceptions(b2, "Invalid type ")
 
         if a1 <= 0:
             raise MyExceptions(a1)
