@@ -10,7 +10,7 @@
 Topic no. 1 drawing shapes. It's a university assigment for programing methods. More info about project in project.pdf
 
 ## Technologies
-Proiject is created with:
+Project is created with:
 * Python 3.11
 
 ## Setup
