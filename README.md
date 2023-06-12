@@ -3,13 +3,15 @@
 
 ## Table of contents
 * [General info](#general-info)
+* [Class Diagram](#class-diagram)
 * [Technologies](#technologies)
 * [Setup](#setup)
 
 ## General info
 Topic no. 1 drawing shapes. It's a university assigment for programing methods.
 
-![alt text](ClassesDiagram (2).drawio?raw=true)
+## Class Diagram
+![ClassDDiagram](ClassesDiagram.svg)
 
 ## Technologies
 Project is created with:
