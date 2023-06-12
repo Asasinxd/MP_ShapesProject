@@ -7,11 +7,13 @@
 * [Setup](#setup)
 
 ## General info
-Topic no. 1 drawing shapes. It's a university assigment for programing methods. More info about project in project.pdf
+Topic no. 1 drawing shapes. It's a university assigment for programing methods.
 
 ## Technologies
 Project is created with:
 * Python 3.11
+* matplotlib 3.7.1
+* numpy 1.24.3
 
 ## Setup
 
