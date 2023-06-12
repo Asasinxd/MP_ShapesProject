@@ -9,6 +9,8 @@
 ## General info
 Topic no. 1 drawing shapes. It's a university assigment for programing methods.
 
+![alt text](ClassesDiagram (2).drawio?raw=true)
+
 ## Technologies
 Project is created with:
 * Python 3.11
